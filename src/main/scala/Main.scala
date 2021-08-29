@@ -7,7 +7,12 @@ package jonus.cassius.calculator
  */
 object Main {
   def main(args: Array[String]): Unit = {
-    // TODO Implement method to launch the calculator
+    println {
+      Calculator.evaluate("1+2*55") match {
+        case Some(result) => s"The answer is $result"
+        case None =>
+      }
+    }
   }
 }
 

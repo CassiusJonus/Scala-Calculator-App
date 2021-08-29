@@ -7,12 +7,14 @@ import scala.util.parsing.combinator.*
  */
 object Calculator extends JavaTokenParsers {
   /**
-   * Evaluates the given expression and returns an Option[Int]
+   * Evaluates the given expression from and returns an Option[Int]
+   *
+   * The current implementation evalutes expressions from right to left
    *
    * @param expr the expression to evaluate
    * @return an Option[Int] that may contain a result depending on whether the expression is successfully parsed.
    */
-  def evaluate(expr: String): Option[Int] = parseAll(expression, expr) match {
+  def evaluate(expr: String): Option[Int] = parse(expression, expr) match {
     case Success(result, _) => Some(result)
     case Failure(msg, _) => println(s"Failed to parse expression:\n\n$msg"); None
     case Error(msg, _) => println(s"An error occured while attempting to parse the expression:\n\n$msg"); None
